@@ -158,3 +158,9 @@ fi
 
 # Move compiled app back to where Heroku expects it
 mv $BUILD_DIR $APP_BUILD_DIR
+
+# spit dir sizes out
+du -sh */ .*/ | sort -n
+
+# kill ivy cache
+rm -rf $SBT_USER_HOME/.ivy2
