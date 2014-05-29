@@ -24,14 +24,6 @@ curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack
 
 export_env_dir $ENV_DIR
 
-# B.G.T.
-# kill any SNAPSHOT jars in cache
-#what does CACHE_DIR look like?
-echo "CACHE_DIR: $CACHE_DIR"
-echo "SBT_USER_HOME: $SBT_USER_HOME"
-exit 1
-#find $CACHE_DIR -name "*SNAPSHOT*" -exec rm -rf {} \;
-
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
@@ -58,6 +50,10 @@ SBT_BINDIR="$SBT_USER_HOME"/bin
 
 # chdir as sbt expects
 cd $BUILD_DIR
+
+# B.G.T.
+# kill any SNAPSHOT jars in cache
+find $SBT_USER_HOME/.ivy2 -name "*SNAPSHOT*" -exec rm -rf {} \;
 
 # unpack cache
 CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot"
