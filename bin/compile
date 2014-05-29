@@ -63,6 +63,7 @@ for DIR in $CACHED_DIRS; do
   ls $CACHE_DIR/$DIR
   find $CACHE_DIR/$DIR -iname \*SNAPSHOT.jar -exec echo "deleting" {} \; -exec rm {} \;
 done
+exit 1
 
 # unpack cache
 for DIR in $CACHED_DIRS; do
