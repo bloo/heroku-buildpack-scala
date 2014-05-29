@@ -28,7 +28,8 @@ export_env_dir $ENV_DIR
 # kill any SNAPSHOT jars in cache
 #what does CACHE_DIR look like?
 echo "CACHE_DIR: $CACHE_DIR"
-find $CACHE_DIR -type d
+echo "SBT_USER_HOME: $SBT_USER_HOME"
+exit 1
 #find $CACHE_DIR -name "*SNAPSHOT*" -exec rm -rf {} \;
 
 #create the cache dir if it doesn't exist
