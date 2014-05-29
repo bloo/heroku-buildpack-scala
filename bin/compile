@@ -53,7 +53,7 @@ cd $BUILD_DIR
 
 # B.G.T.
 # kill any SNAPSHOT jars in cache
-find $SBT_USER_HOME/.ivy2 -name "*SNAPSHOT*" -exec rm -rf {} \;
+find $CACHE_DIR/$SBT_USER_HOME/.ivy2 -name "*SNAPSHOT*" -exec rm -rf {} \;
 
 # unpack cache
 CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot"
