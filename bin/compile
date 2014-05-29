@@ -51,11 +51,6 @@ SBT_BINDIR="$SBT_USER_HOME"/bin
 # chdir as sbt expects
 cd $BUILD_DIR
 
-echo "$$$ Where is .ivy2??"
-find / -name .ivy2 -type d
-echo ".. exiting w/ code 1"
-exit 1
-
 CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot"
 
 # B.G.T.
