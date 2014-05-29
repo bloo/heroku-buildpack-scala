@@ -51,6 +51,13 @@ SBT_BINDIR="$SBT_USER_HOME"/bin
 # chdir as sbt expects
 cd $BUILD_DIR
 
+echo "$$$ Where is .ivy2??"
+find / -name .ivy2 -type d
+echo ".. exiting w/ code 1"
+exit 1
+
+CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot"
+
 # B.G.T.
 # kill any SNAPSHOT jars in cache
 # removing SNAPSHOT.jar files to ensure we use latest
@@ -62,13 +69,7 @@ for DIR in $CACHED_DIRS; do
   find $CACHE_DIR/$DIR -iname \*SNAPSHOT.jar -exec echo "deleting" {} \; -exec rm {} \;
 done
 
-echo "$$$ Where is .ivy2??"
-find / -name .ivy2 -type d
-echo ".. exiting w/ code 1"
-exit 1
-
 # unpack cache
-CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot"
 for DIR in $CACHED_DIRS; do
   cache_copy $DIR $CACHE_DIR $BUILD_DIR
 done
