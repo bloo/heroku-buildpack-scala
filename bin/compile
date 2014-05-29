@@ -56,8 +56,9 @@ CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot
 # B.G.T.
 # kill any SNAPSHOT jars in cache
 # removing SNAPSHOT.jar files to ensure we use latest
-rm -rf $CACHE_DIR/$SBT_USER_HOME/.ivy2
-#find $CACHE_DIR/$SBT_USER_HOME/.ivy2 -iname \*SNAPSHOT\*jar -exec echo "deleting" {} \; -exec rm {} \;
+if test -e $CACHE_DIR/$SBT_USER_HOME/.ivy2; then
+    find $CACHE_DIR/$SBT_USER_HOME/.ivy2 -iname \*SNAPSHOT\*jar -exec echo "deleting" {} \; -exec rm {} \;
+fi
 exit 1
 
 # unpack cache
