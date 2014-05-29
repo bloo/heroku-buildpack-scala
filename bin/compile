@@ -24,6 +24,10 @@ curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack
 
 export_env_dir $ENV_DIR
 
+# B.G.T.
+# kill any SNAPSHOT jars in cache
+find $CACHE_DIR -name "*SNAPSHOT*jar" -exec rm -rf {} \;
+
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
