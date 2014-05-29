@@ -182,7 +182,3 @@ mv $BUILD_DIR $APP_BUILD_DIR
 #  echo "-----> Dropping ivy cache from the slug: $DIR"
 #  rm -rf $SBT_USER_HOME/.ivy2
 #done
-
-# kill huge scala-compiler lib - only needed during local dev
-# to compile scalate templates. they're precompiled otherwise
-rm target/universal/stage/lib/org.scala-lang.scala-compiler-*
