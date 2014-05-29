@@ -54,10 +54,13 @@ cd $BUILD_DIR
 # B.G.T.
 # kill any SNAPSHOT jars in cache
 # removing SNAPSHOT.jar files to ensure we use latest
+echo " ########## Killing SNAPSHOTS, looking in $CACHE_DIR"
+ls $CACHE_DIR
 for DIR in $CACHED_DIRS; do
+  echo " ########## Looking for SNAPSHOTS in $CACHE_DIR/$DIR"
+  ls $CACHE_DIR/$DIR
   find $CACHE_DIR/$DIR -iname \*SNAPSHOT.jar -exec echo "deleting" {} \; -exec rm {} \;
 done
-exit
 
 # unpack cache
 CACHED_DIRS="$SBT_USER_HOME/.ivy2 $SBT_BINDIR target project/target project/boot"
